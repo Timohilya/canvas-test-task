@@ -7,11 +7,8 @@ function App() {
   const [polygons, setPolygons] = useState([]);
   const [points, setPoints] = useState([]);
 
-  console.log('component render');
-
   // API CALLS
   const getPolygons = async () => {
-    console.log('getPolygons');
     setLoading(true);
     const res = await fetch('http://localhost:3000/getPolygons');
     const data = await res.json();
@@ -20,7 +17,6 @@ function App() {
   };
 
   const addPolygon = async (points) => {
-    console.log('addPolygon');
     setLoading(true);
     await fetch('http://localhost:3000/addPolygon', {
       method: 'POST',
@@ -31,7 +27,6 @@ function App() {
   };
 
   const deletePolygon = (id) => async () => {
-    console.log('deletePolygon');
     setLoading(true);
     await fetch(`http://localhost:3000/deletePolygon/${id}`, {
       method: 'DELETE',
@@ -40,7 +35,6 @@ function App() {
   };
 
   useEffect(() => {
-    console.log('Initializing app...');
     getPolygons();
 
     const canvas = canvasRef.current;
@@ -83,13 +77,11 @@ function App() {
 
     canvas.addEventListener('click', handleClickWithTimeout);
     return () => {
-      console.log('remove listeners');
       canvas.removeEventListener('click', handleClickWithTimeout);
     };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    console.log('Rendering canvas...');
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
 
