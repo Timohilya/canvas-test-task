@@ -4,6 +4,9 @@
 2. Create terminal#2 and run `npm i` and `npm run dev`
 
 # Description
+
 Server: Node JS, Express
+
 Saved data: `polygons.json`
+
 Front: React with Vite
